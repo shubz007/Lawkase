@@ -1,0 +1,33 @@
+/* Ensure the map container stays within the Bootstrap grid */
+.map-container {
+    position: relative;
+    width: 100%;      /* Ensure it takes the full width of its column */
+    max-width: 100%;  /* Prevents it from overflowing */
+    height: 0;        /* Needed for aspect ratio */
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio (Change as needed) */
+    overflow: hidden; /* Prevents overflowing content */
+    border: 1px solid #ddd; /* Optional: Adds a subtle border */
+    border-radius: 5px; /* Optional: Rounded corners */
+}
+
+/* Make the Google Map fill the container */
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive height adjustments */
+@media (max-width: 768px) {
+    .map-container {
+        padding-bottom: 75%; /* Adjusts aspect ratio for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .map-container {
+        padding-bottom: 100%; /* Adjust for very small screens */
+    }
+}

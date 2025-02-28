@@ -640,8 +640,8 @@ button.ui-button::-moz-focus-inner {
 
 /* Overlays */
 .ui-widget-overlay {
-	background: #aaaaaa;
-	opacity: .3;
+	background: #ffffff;
+	opacity: .1;
 	filter: Alpha(Opacity=30); /* support: IE8 */
 }
 .ui-widget-shadow {

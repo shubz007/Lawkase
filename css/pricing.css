@@ -1,19 +1,7 @@
 @charset "utf-8";
 @import url('fontawesome-all.min');
 
-html,
-body {
-    font-size: 15px;
-    color: #505050;
-    font-family: 'Rubik', sans-serif;
-    vertical-align: baseline;
-    line-height: 25px;
-    font-weight: 400;
-    overflow-x: hidden;
-}
-p {
-    margin: 0 0;
-}
+
 a {
     color: #f36233;
     transition: all 0.3s ease 0s;
@@ -83,7 +71,7 @@ ul {
     background: #fff;
     box-shadow: 1px 20px 12px -15px rgba(0,0,0,0.2);
     padding: 40px 15px;
-    text-align: center;
+    /* text-align: center; */
     border: 1px solid rgba(0,0,0,0.05);
     transition:0.5s ease;
 }
