@@ -23,7 +23,45 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/logo.css">
+  <style>
+    .service-card {
+            background-color: #f8f9fa; /* Light gray background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffbf00; /* Bootstrap primary color */
+        }
+        .service-desc {
+            font-size: 1rem;
+            color: #333;
+        }
+ 
 
+.startup-list {
+    column-count: 2;
+    column-gap: 40px;
+    color: #49738d;
+}
+
+.btn-primary {
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color: rgb(219, 187, 105);
+    color: #fff;
+    border-color: rgb(219, 187, 105);
+}
+
+.btn-primary:hover {
+    background-color: rgb(235, 187, 68);
+    border-color: rgb(227, 178, 55);
+}
+
+  </style>
   </head>
   <body>
   
@@ -104,7 +142,34 @@
       </div>
     </div>
     
+    <div class="container mt-5 text-center ">
+      <h2 class=" mb-5">Our Incubation Ecosystem</h2>
+      <div id="services-container" class="row"></div> <!-- Services will be appended here -->
+  </div>
+  
+  <div class=" text-center p-4 rounded shadow-sm bg-light">
+    <h3 class="mb-4 text-dark fw-bold">Startups of Ecosystem</h3>
+    <p class="mb-4">Inqbate ecosystem and investment opportunities. Startups have an opportunity to join our ecosystem to get access to the network, resources, and cost-effective services from our preferred partners.</p>
     
+    <ul class="list-unstyled startup-list">
+        <li>Smriti</li>
+        <li>Lawkase</li>
+        <li>Khaadkriti</li>
+        <li>Cowlixir</li>
+        <li>Shilpakarman</li>
+        <li>Jinnie</li>
+        <li>Saruaan</li>
+        <li>Ghraat</li>
+        <li>Nexpeak</li>
+        <li>Makhir</li>
+        <li>CYBSS</li>
+        <li>Design Tank</li>
+    </ul>
+
+    <a href="#" class="btn btn-primary mt-4">Learn More</a>
+</div>
+
+
     <div class="site-section pb-0">
       <div class="container">
         <div class="row justify-content-center mb-5">
@@ -405,7 +470,7 @@
   <script src="js/bootstrap-datepicker.min.js"></script>
   <script src="js/aos.js"></script>
   <!-- <script src="js/circleaudioplayer.js"></script> -->
-
+<script src="js/Ecosystem.js"></script>
   <script src="js/main.js"></script>
   <script src="js/favicon.js"></script>
   
