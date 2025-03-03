@@ -54,7 +54,7 @@
 /* Responsive Styles */
 @media (max-width: 1024px) {
     .navbar-brand img.logo {
-        height: 60px; /* Increased size on medium screens */
+        height: 90px; /* Increased size on medium screens */
     }
 }
 
@@ -67,10 +67,11 @@
     .navbar-brand {
         justify-content: center;
         margin-bottom: 10px;
+        margin-left: -30px;
     }
 
     .navbar-brand img.logo {
-        height: 75px; /* Increased size for mobile */
+        height: 130px; /* Increased size for mobile */
     }
     
 

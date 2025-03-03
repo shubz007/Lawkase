@@ -3,7 +3,7 @@
 
 
 a {
-    color: #f36233;
+    color: #002855;
     transition: all 0.3s ease 0s;
     text-decoration: none !important;
     outline: none !important;
@@ -41,7 +41,7 @@ ul {
 .readon {
     position: relative;
     display: inline-block !important;
-    background: #f36233;
+    background: #002855;
     padding: 14px 30px;
     line-height: normal;
     color: #ffffff !important;
@@ -94,7 +94,7 @@ ul {
 }
 
 .pricingTable .holder .price p{
-    color:#f36233;
+    color:#CEA15A;;
     margin-bottom:25px;    
 }
 
@@ -114,7 +114,7 @@ ul {
 }
 
 .pricingTable .holder.active{
-    background:#f36233;
+    background:#CEA15A;;
 }
 
 .pricingTable .holder.active .hdng p,
@@ -125,7 +125,7 @@ ul {
 
 .pricingTable .holder.active .readon{
     background:#fff;
-    color:#f36233!important;
+    color:#002855!important;
 }
 
 .pricingTable .holder.active .readon:hover{
@@ -141,7 +141,7 @@ ul {
     border-radius:1.6666666667rem;
     margin:0px auto;
     margin-bottom:40px; 
-    background:#f36233;
+    background:#002855;
     text-align:center;
     position:relative;
 }
@@ -162,7 +162,7 @@ ul {
 }
 
 .pricingTable .tabsBtnHolder ul li p.active{
-    color:#f36233;
+    color:#000000;
 }
 
 .pricingTable .tabsBtnHolder ul li.indicator{

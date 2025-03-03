@@ -76,10 +76,18 @@ a {
     color: #000; }
   .btn.btn-sm {
     font-size: 0.9rem; }
-  .btn.btn-primary {
-    color: #fff; }
-  .btn.btn-outline-primary:hover {
-    color: #fff !important; }
+    .btn.btn-primary {
+      border-radius: 0px;
+      padding: 10px 20px;
+      background-color: #002855;
+      color: #fff;
+      border-color: rgb(219, 187, 105);
+  }
+  
+  .btn.btn-primary:hover {
+      background-color: rgb(235, 187, 68);
+      border-color: rgb(227, 178, 55);
+  }
   .btn.btn-black {
     background: #000 !important;
     color: #fff; }
@@ -879,5 +887,36 @@ p.dropcap:first-child:first-letter {
       .block-16 .play-button:hover > span {
         color: #fff; }
 
-
-      
+/* Css for newletter */
+  
+        
+        .home-newsletter {
+          padding: 80px 0;
+          background: #CEA15A;
+          }
+          
+          .home-newsletter .single {
+          max-width: 650px;
+          margin: 0 auto;
+          text-align: center;
+          position: relative;
+          z-index: 2; }
+          .home-newsletter .single h2 {
+          font-size: 22px;
+          color: white;
+          text-transform: uppercase;
+          margin-bottom: 40px; }
+          .home-newsletter .single .form-control {
+          height: 50px;
+          background: rgba(255, 255, 255, 0.6);
+          border-color: transparent;
+          border-radius: 20px 0 0 20px; }
+          .home-newsletter .single .form-control:focus {
+          box-shadow: none;
+          border-color:#002855; }
+          .home-newsletter .single .btn {
+          min-height: 50px; 
+          border-radius: 0 20px 20px 0;
+          background: #002855;
+          color: #fff;
+          }       
