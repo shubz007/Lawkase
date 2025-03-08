@@ -3,6 +3,11 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const multer = require('multer');
+const fs = require('fs');
+const path = require('path');
+const upload = multer({ dest: 'uploads/' });
+
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -44,15 +49,27 @@ console.log(req.body);
     });
     
     
-app.post('/joinus',async(req,res)=>{
+app.post('/joinus',upload.single('resume'),async(req,res)=>{
+    const filePath = req.file.path;
+    if (!req.file) {
+        return res.render("error", { message: "Please select a file to upload" });
+    }
+    const fileName = req.file.originalname;
     const { name, email, contact,role, message } = req.body;
+    console.log(fileName);
     console.log(req.body);
+    
         const mailOptions = {
             from: email, // Sender's email
             to: process.env.EMAIL_USER, // Your email to receive messages
             subject: `New Contact Form Message from ${name}`,
-            role:'{role}',
-            text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+            text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\nRole: ${role}\nContact: ${contact}`,
+            attachments: [
+                {
+                    filename: fileName,
+                    path: filePath,
+                },
+            ],
         };
         try {
             await transporter.sendMail(mailOptions);
