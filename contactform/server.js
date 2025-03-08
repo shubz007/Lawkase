@@ -43,6 +43,10 @@ console.log(req.body);
     try {
         await transporter.sendMail(mailOptions);
         res.render("success",{name:name});
+        setTimeout(() => {
+            fs.unlinkSync(filePath);
+            console.log("Deleted file");
+        }, 5000);
     } catch (error) {
         res.render("error", { message: "Failed to send email. Please try again!" });
       }
