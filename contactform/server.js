@@ -44,7 +44,23 @@ console.log(req.body);
     });
     
     
-
+app.post('/joinus',async(req,res)=>{
+    const { name, email, contact,role, message } = req.body;
+    console.log(req.body);
+        const mailOptions = {
+            from: email, // Sender's email
+            to: process.env.EMAIL_USER, // Your email to receive messages
+            subject: `New Contact Form Message from ${name}`,
+            role:'{role}',
+            text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+        };
+        try {
+            await transporter.sendMail(mailOptions);
+            res.render("success",{name:name});
+        } catch (error) {
+            res.render("error", { message: "Failed to send email. Please try again!" });
+          }
+        });
 
 // Start server
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
