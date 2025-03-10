@@ -23,11 +23,14 @@
 
 /* Navbar Styling */
 .site-navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: transparent; /* Adjust if needed */
-    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background:transparent;
+   
+    padding: 5px 0;
 }
 
 /* Navigation Menu Styling */

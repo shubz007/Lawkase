@@ -47,6 +47,10 @@
   font-size: $navbar-brand-font-size;
   line-height: inherit;
   white-space: nowrap;
+  position: absolute;
+    top: -20px; /* Moves logo upwards */
+    left: 20px; /* Adjust for proper alignment */
+    z-index: 20;
 
   @include hover-focus {
     text-decoration: none;

@@ -47,12 +47,7 @@ console.log(req.body);
     try {
         await transporter.sendMail(mailOptions);
         res.render("success",{name:name});
-        setTimeout(() => {
-            if (fs.existsSync(filePath)) {
-                fs.unlinkSync(filePath);
-                console.log("Temporary file deleted:", filePath);
-            }
-        }, 5000);
+       
         
     } catch (error) {
         res.render("error",{name:name}, { message: "Failed to send email. Please try again!" });
