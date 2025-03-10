@@ -19,6 +19,7 @@ const PORT =  5000;
 app.use(cors());
 app.use(bodyParser.json());
 
+
 const transporter = nodemailer.createTransport({
     service: 'gmail', 
     host: 'smtp.gmail.com',
@@ -88,6 +89,37 @@ app.post('/joinus',upload.single('resume'),async(req,res)=>{
             res.render("error", { message: "Failed to send email. Please try again!" });
           }
         });
+        
+        let subscribers = [];
 
+        app.post("/subscribe", (req, res) => {  
+            const { email } = req.body;
+            if (!email) {
+                return res.status(400).json({ message: "Email is required" });
+            }
+            if (subscribers.includes(email)) {
+                return res.status(400).json({ message: "Email is already subscribed" });
+            }
+            subscribers.push(email);
+            res.status(201).json({ message: "Email subscribed successfully" });
+
+            sendConfirmationEmail(email);
+        }
+        );
+
+        const sendConfirmationEmail = async (email) => {
+            const mailOptions = {
+                from: process.env.EMAIL_USER,
+                to: email,
+                subject: "Subscription Confirmation",
+                text: "You have successfully subscribed to our newsletter!"
+            };
+            try {
+                await transporter.sendMail(mailOptions);
+                console.log("Confirmation email sent to:", email);
+            } catch (error) {
+                console.log(error);
+            }
+        };
 // Start server
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

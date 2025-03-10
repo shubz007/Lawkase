@@ -513,7 +513,7 @@
           <h2>Subscribe to our Newsletter</h2>
           <form id="newsletterForm">
             <div class="input-group">
-              <input type="email" name="email" id="newsletterEmail" class="form-control" placeholder="Enter your email" required>
+              <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required>
               <span class="input-group-btn">
                 <button class="btn btn-theme" type="submit">Subscribe</button>
               </span>
@@ -615,6 +615,21 @@
     </footer>
     
   </div>
+
+  <script>
+        document.getElementById("newsletterForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const email = document.getElementById("email").value;
+            const response = await fetch("http://localhost:5000/subscribe", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email })
+            });
+
+            const result = await response.json();
+            document.getElementById("message").innerText = result.message;
+        });
+    </script>
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
