@@ -21,6 +21,9 @@ app.use(bodyParser.json());
 
 const transporter = nodemailer.createTransport({
     service: 'gmail', 
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
         user: process.env.EMAIL_USER, 
         pass: process.env.EMAIL_PASS
@@ -44,11 +47,14 @@ console.log(req.body);
         await transporter.sendMail(mailOptions);
         res.render("success",{name:name});
         setTimeout(() => {
-            fs.unlinkSync(filePath);
-            console.log("Deleted file");
+            if (fs.existsSync(filePath)) {
+                fs.unlinkSync(filePath);
+                console.log("Temporary file deleted:", filePath);
+            }
         }, 5000);
+        
     } catch (error) {
-        res.render("error", { message: "Failed to send email. Please try again!" });
+        res.render("error",{name:name}, { message: "Failed to send email. Please try again!" });
       }
     });
     
