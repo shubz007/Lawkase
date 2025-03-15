@@ -92,7 +92,7 @@
   
   
   
-          <form onsubmit=""action="http://localhost:5000/joinus"enctype="multipart/form-data" method="POST" class="contact-form" id="contactForm" >
+          <form enctype="multipart/form-data" method="POST" class="contact-form" id="contactForm" >
   
             <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
@@ -360,21 +360,13 @@
 
   </div>
 
-  <!-- Form Javascript -->
-  <script>
-    function toggleResumeUpload() {
-      var role = document.getElementById("autoSizingSelect").value;
-      var resumeField = document.getElementById("resumeUpload");
-      
-      if (role === "intern" || role === "associate" || role === "trainee") {
-        resumeField.style.display = "block";
-      } else {
-        resumeField.style.display = "none";
-      }
-    }
-  </script>
+
+
+<!-- Js for the Handling form through render -->
+ 
 
   <!-- JS Scripts -->
+   <script src="js/joineeform.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
