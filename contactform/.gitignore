@@ -1,2 +1,5 @@
-node_modules/
-.env
+// Purpose: To ignore the files and directories that are not required to be pushed to the repository.
+
+/node_modules/
+/dist/
+/.env
