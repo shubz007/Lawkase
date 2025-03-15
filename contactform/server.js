@@ -7,6 +7,9 @@ const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const upload = multer({ dest: 'uploads/' });
+const mongoose = require('mongoose');
+const { response } = require('express');
+const { json } = require('body-parser');
 
 
 const app = express();
@@ -85,23 +88,51 @@ app.post('/joinus',upload.single('resume'),async(req,res)=>{
           }
         });
         
-        let subscribers = [];
+   //mongoose connection for newsletter
+   
+   mongoose.connect(process.env.MONGO_URI, { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true 
+}).then(() => console.log("Connected to MongoDB"))
+  .catch(err => console.error("MongoDB connection error:", err));
 
-        app.post("/subscribe", (req, res) => {  
-            const { email } = req.body;
-            if (!email) {
-                return res.status(400).json({ message: "Email is required" });
-            }
-            if (subscribers.includes(email)) {
-                return res.status(400).json({ message: "Email is already subscribed" });
-            }
-            subscribers.push(email);
-            res.status(201).json({ message: "Email subscribed successfully" });
+  //schema Defined her 
+  const subscriberSchema = new mongoose.Schema({
+    email: { type: String, unique: true, required: true }
+});
+const Subscriber = mongoose.model("Subscriber", subscriberSchema);
 
-            sendConfirmationEmail(email);
+
+app.post("/subscribe", async (req, res) => {
+    const { email } = req.body;
+    console.log(email);
+
+    if (!email) {
+        return res.status(400).json({ message: "Email is required" });
+    }
+
+    try {
+        // Check if email is already subscribed
+        const existingSubscriber = await Subscriber.findOne({ email });
+        if (existingSubscriber) {
+            return res.status(400).json({ message: "Email is already subscribed" });
         }
-        );
 
+        // Add to MongoDB
+        const newSubscriber = new Subscriber({ email });
+        await newSubscriber.save();
+
+        // Send confirmation email
+        //sendConfirmationEmail(email);
+
+        res.status(201).json({ message: "Email subscribed successfully!" });
+
+    } catch (error) {
+        res.status(500).json({ message: "Error subscribing, please try again later." });
+    }
+});
+
+// Sending confirmation to the user that it has been subscribed
         const sendConfirmationEmail = async (email) => {
             const mailOptions = {
                 from: process.env.EMAIL_USER,

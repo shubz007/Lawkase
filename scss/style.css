@@ -298,7 +298,7 @@ a:hover {
 }
 .site-footer .footer-heading:before {
   content: "";
-  background: #002855;
+  background: #00000;
   width: 40px;
   height: 2px;
   position: absolute;
