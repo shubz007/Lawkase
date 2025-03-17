@@ -1,44 +1,49 @@
 function toggleResumeUpload() {
     var role = document.getElementById("autoSizingSelect").value;
     var resumeField = document.getElementById("resumeUpload");
+    var resumeInput = document.getElementById("resume");
 
     if (role === "intern" || role === "associate" || role === "trainee") {
         resumeField.style.display = "block";
     } else {
         resumeField.style.display = "none";
+        resumeInput.value = ""; // Clear file input when hidden
     }
 }
 
-// Handling form submission
 document.getElementById("contactForm").addEventListener("submit", async function (event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
-    const formData = new FormData(this); // Collect all form data including file
-    const successAlert = document.getElementById("successAlert"); // Success message div
+    const formData = new FormData(this);
+    const successAlert = document.getElementById("successAlert");
 
     try {
-        const response = await fetch("https://c47-lawkase.onrender.com/joinus", { 
+        const response = await fetch("https://c47-lawkase.onrender.com/joinus", {
             method: "POST",
-            body: formData // Send form data with file
+            body: formData
         });
 
         const result = await response.json();
+        
         if (response.ok) {
-            // Show success message
-            successAlert.innerText = "Your response has been noted!";
+            successAlert.innerText = result.message || "Your response has been noted!";
+            successAlert.style.backgroundColor = "#4CAF50"; 
             successAlert.style.display = "block";
-
-            // Reset form after submission
             this.reset();
 
-            // Hide alert after 3 seconds
-            setTimeout(function () {
+            setTimeout(() => {
                 successAlert.style.display = "none";
             }, 3000);
         } else {
-            alert("Error: " + result.error);
+            throw new Error(result.error || "Submission failed");
         }
     } catch (error) {
-        alert("Something went wrong. Please try again later.");
+        successAlert.innerText = error.message;
+        successAlert.style.backgroundColor = "#f44336";
+        successAlert.style.display = "block";
+
+        setTimeout(() => {
+            successAlert.style.display = "none";
+        }, 5000);
     }
 });

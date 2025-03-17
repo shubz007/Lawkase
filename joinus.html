@@ -92,68 +92,67 @@
   
   
   
-          <form enctype="multipart/form-data" method="POST" class="contact-form" id="contactForm" >
-  
+          <form enctype="multipart/form-data" method="POST" class="contact-form" id="contactForm">
             <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="font-weight-bold" for="name">Full Name</label>
-                  <input type="text" name="name" id="name" class="form-control" placeholder="Full Name" required>
+                    <label class="font-weight-bold" for="name">Full Name</label>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Full Name" required>
                 </div>
-              </div>
-              
-              <div class="row form-group">
+            </div>
+        
+            <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="font-weight-bold" for="email">Email</label>
-                  <input type="email" name="email" id="email" class="form-control" placeholder="Email Address" required>
+                    <label class="font-weight-bold" for="email">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Email Address" required>
                 </div>
-              </div>
-              
-              <!-- Contact Number Field -->
-              <div class="row form-group">
+            </div>
+        
+            <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="font-weight-bold" for="contact">Contact Number</label>
-                  <input type="tel" name="contact" id="contact" class="form-control" placeholder="Contact Number" required>
+                    <label class="font-weight-bold" for="contact">Contact Number</label>
+                    <input type="tel" name="contact" id="contact" class="form-control" placeholder="Contact Number" required>
                 </div>
-              </div>
-              
-              <div class="row form-group">
+            </div>
+        
+            <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="font-weight-bold" for="autoSizingSelect">Choose Role</label>
-                  <select class="form-select" id="autoSizingSelect" onchange="toggleResumeUpload()" type ="text" name="role" required>
-                    <option selected>Choose...</option>
-                    <option value="intern">Intern</option>
-                    <option value="associate">Associate</option>
-                    <option value="trainee">Trainee</option>
-                    <option value="partner">Partner</option>
-                  </select>
+                    <label class="font-weight-bold" for="autoSizingSelect">Choose Role</label>
+                    <select class="form-select" id="autoSizingSelect" name="role" onchange="toggleResumeUpload()" required>
+                        <option value="" selected>Choose...</option>
+                        <option value="intern">Intern</option>
+                        <option value="associate">Associate</option>
+                        <option value="trainee">Trainee</option>
+                        <option value="partner">Partner</option>
+                    </select>
                 </div>
-              </div>
-              
-              <!-- Resume Upload Field (Hidden by Default) -->
-              <div class="row form-group" id="resumeUpload" style="display: none;">
+            </div>
+        
+            <div class="row form-group" id="resumeUpload" style="display: none;">
                 <div class="col-md-12">
-                  <label class="font-weight-bold" for="resume">Upload Resume</label>
-                  <input type="file" name="resume" id="resume" class="form-control" accept=".pdf,.doc,.docx">
+                    <label class=" font-weight-bold" for="resume">Upload Resume</label>
+                    <div class="custom-file">
+                      <input type="file" name="resume" id="resume" class="custom-file-input" accept=".pdf,.doc,.docx">
+                      <label class="custom-file-label" for="resume">Choose file</label>
+                  </div>
                 </div>
-              </div>
-              
-              <div class="row form-group">
+            </div>
+        
+            <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="font-weight-bold" for="message">Message</label>
-                  <textarea name="message" id="message" cols="30" rows="5" class="form-control" placeholder="Say hello to us" required></textarea>
+                    <label class="font-weight-bold" for="message">Message</label>
+                    <textarea name="message" id="message" cols="30" rows="5" class="form-control" placeholder="Say hello to us" required></textarea>
                 </div>
-              </div>
-              
-              <div class="row form-group">
+            </div>
+        
+            <div class="row form-group">
                 <div class="col-md-12">
-                  <button type="submit" class="btn btn-primary py-3 px-4">Send Message</button>
+                    <button type="submit" class="btn btn-primary py-3 px-4">Send Message</button>
                 </div>
-              </div>
-            
-  
-          </form>
-          <div id="successAlert" style="display: none; padding: 10px; background-color: #4CAF50; color: white; margin-top: 10px; text-align: center; border-radius: 5px;">
-          </div>
+            </div>
+        </form>
+        
+        <div id="successAlert" style="display: none; padding: 10px; background-color: #4CAF50; color: white; margin-top: 10px; text-align: center; border-radius: 5px;"></div>
+        
           
         </div>
   

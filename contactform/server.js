@@ -59,36 +59,39 @@ app.post('/send-email', async (req, res) => {
 });
 
     
-    
-app.post('/joinus',upload.single('resume'),async(req,res)=>{
-    const filePath = req.file.path;
+app.post('/joinus', upload.single('resume'), async (req, res) => {
     if (!req.file) {
-        return res.render("error", { message: "Please select a file to upload" });
+        return res.status(400).json({ error: "Please select a file to upload" });
     }
+
+    const filePath = req.file.path;
     const fileName = req.file.originalname;
-    const { name, email, contact,role, message } = req.body;
-    console.log(fileName);
-    console.log(req.body);
-    
-        const mailOptions = {
-            from: email, // Sender's email
-            to: process.env.EMAIL_USER, // Your email to receive messages
-            subject: `New Contact Form Message from ${name}`,
-            text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\nRole: ${role}\nContact: ${contact}`,
-            attachments: [
-                {
-                    filename: fileName,
-                    path: filePath,
-                },
-            ],
-        };
-        try {
-            await transporter.sendMail(mailOptions);
-            res.render("success",{name:name});
-        } catch (error) {
-            res.render("error", { message: "Failed to send email. Please try again!" });
-          }
+    const { name, email, contact, role, message } = req.body;
+
+    const mailOptions = {
+        from: email,
+        to: process.env.EMAIL_USER,
+        subject: `New Contact Form Message from ${name}`,
+        text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}\nRole: ${role}\nContact: ${contact}`,
+        attachments: [{ filename: fileName, path: filePath }]
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        fs.unlink(filePath, (err) => {
+            if (err) {
+                console.error("Error deleting file:", err);
+            }
         });
+        
+        // ✅ Send success response
+        return res.json({ message: "Your response has been noted!" });
+    } catch (error) {
+        console.error("Email Error:", error);
+        return res.status(500).json({ error: "Failed to send email. Please try again!" });
+    }
+});
+
         
    //mongoose connection for newsletter
    
