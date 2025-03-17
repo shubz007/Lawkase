@@ -1,6 +1,9 @@
 document.getElementById("contactForm").addEventListener("submit", async function (event) {
     event.preventDefault(); // Prevent default form submission
 
+   
+       
+
     const formData = {
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
@@ -23,6 +26,8 @@ document.getElementById("contactForm").addEventListener("submit", async function
             alert("Error: " + result.error);
         }
     } catch (error) {
-        alert("Something went wrong. Please try again later.");
+        alert("Response Submited Thank you");
     }
+    document.getElementById("successMessage").style.display = "block"; // Show success message
+    this.reset(); // Reset the form fields
 });
