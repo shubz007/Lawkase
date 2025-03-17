@@ -38,24 +38,26 @@ app.get('/',(req,res)=>{
 console.log("Server active");
 });
 
-app.post('/send-email', async (req, res) => {
+app.post('/send-email', async (req, res) => { 
     const { name, email, subject, message } = req.body;
-console.log(req.body);
+    console.log("Received Form Data:", req.body);
+
     const mailOptions = {
-        from: email, // Sender's email
-        to: process.env.EMAIL_USER, // Your email to receive messages
+        from: process.env.EMAIL_USER,  
+        to: process.env.EMAIL_USER,    
         subject: `New Contact Form Message from ${name}`,
-        text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+        text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`
     };
+
     try {
         await transporter.sendMail(mailOptions);
-        res.render("success",{name:name});
-       
-        
+        res.json({ success: true, message: "Email sent successfully!" });
     } catch (error) {
-        res.render("error",{name:name}, { message: "Failed to send email. Please try again!" });
-      }
-    });
+        console.error("Email send error:", error);
+        res.status(500).json({ success: false, message: "Failed to send email. Please try again!" });
+    }
+});
+
     
     
 app.post('/joinus',upload.single('resume'),async(req,res)=>{
