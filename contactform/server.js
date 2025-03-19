@@ -39,8 +39,11 @@ console.log("Server active");
 });
 
 app.post('/send-email', async (req, res) => { 
-    const { name, email, subject, message } = req.body;
-    console.log("Received Form Data:", req.body);
+    const { name, subject, message } = req.body;
+    const email = req.body["email-address"]; 
+    console.log(email);
+    console.log(req.body);
+    console.log(req.body["email-address"]);
 
     const mailOptions = {
         from: email,  
@@ -48,7 +51,7 @@ app.post('/send-email', async (req, res) => {
         subject: `New Contact Form Message from ${name}`,
         text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:${message}`
     };
-console.log(req.body.email);
+    console.log(req.body["email-address"]);
     try {
         await transporter.sendMail(mailOptions);
         res.json({ success: true, message: "Thanks for your request. Our team will connect with you soon." });
