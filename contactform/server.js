@@ -43,7 +43,7 @@ app.post('/send-email', async (req, res) => {
     console.log("Received Form Data:", req.body);
 
     const mailOptions = {
-        from: process.env.EMAIL_USER,  
+        from: email,  
         to: process.env.EMAIL_USER,    
         subject: `New Contact Form Message from ${name}`,
         text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:${message}`
