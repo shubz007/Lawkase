@@ -46,9 +46,9 @@ app.post('/send-email', async (req, res) => {
         from: process.env.EMAIL_USER,  
         to: process.env.EMAIL_USER,    
         subject: `New Contact Form Message from ${name}`,
-        text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`
+        text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:${message}`
     };
-
+console.log(req.body.email);
     try {
         await transporter.sendMail(mailOptions);
         res.json({ success: true, message: "Thanks for your request. Our team will connect with you soon." });
@@ -72,7 +72,7 @@ app.post('/joinus', upload.single('resume'), async (req, res) => {
         from: email,
         to: process.env.EMAIL_USER,
         subject: `New Contact Form Message from ${name}`,
-        text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}\nRole: ${role}\nContact: ${contact}`,
+        text: `Name: ${name}\nEmail: ${email}\nMessage:${message}\nRole: ${role}\nContact: ${contact}`,
         attachments: [{ filename: fileName, path: filePath }]
     };
 
