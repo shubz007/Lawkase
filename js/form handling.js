@@ -1,30 +1,31 @@
-document.getElementById("contactForm").addEventListener("submit", async function (event) {
-    event.preventDefault(); // Prevent default form submission
+const formElem = document.getElementById("contactForm");
+const alertElem = document.querySelector(".alert");
+const buttonElem = document.querySelector(".submitBtn");
 
-    const formData = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        subject: document.getElementById("subject").value,
-        message: document.getElementById("message").value
-    };
+formElem.addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-    try {
-        const response = await fetch("https://c47-lawkase.onrender.com/send-email", {  
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData)
-        });
+  const formData = new FormData(formElem);
+  const data = Object.fromEntries(formData.entries());
 
-        const result = await response.json();
-        
-        if (response.ok) {
-            document.getElementById("successMessage").style.display = "block"; // Show success message
-            document.getElementById("successMessage").innerText = result.message; // Show server response message
-            this.reset(); // Reset form after successful submission
-        } else {
-            alert("Error: " + result.message); // Show backend error message
-        }
-    } catch (error) {
-        alert("An unexpected error occurred. Please try again!"); 
-    }
+  const url = "https://c47-lawkase.onrender.com/send-email";
+  try {
+    buttonElem.textContent = "Submitting...";
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    alertElem.textContent = "Message sent successfully! 🎊";
+    alertElem.style.opacity = 100;
+    setTimeout(() => {
+      alertElem.style.opacity = 0;
+      buttonElem.textContent = "Submit";
+      formElem.reset();
+    }, 2000);
+  } catch (err) {
+    alertElem.classList.remove("alert-success");
+    alertElem.classList.add("alert-danger");
+    alertElem.textContent = "Something went wrong";
+  }
 });

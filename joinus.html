@@ -89,72 +89,68 @@
       <div class="row">
   
         <div class="col-md-12 col-lg-7 mb-5">
-  
-  
-  
           <form enctype="multipart/form-data" method="POST" class="contact-form" id="contactForm">
-            <div class="row form-group">
-                <div class="col-md-12 mb-3 mb-md-0">
-                    <label class="font-weight-bold" for="name">Full Name</label>
-                    <input type="text" name="name" id="name" class="form-control" placeholder="Full Name" required>
-                </div>
-            </div>
-        
-            <div class="row form-group">
-                <div class="col-md-12">
-                    <label class="font-weight-bold" for="email">Email</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="Email Address" required>
-                </div>
-            </div>
-        
-            <div class="row form-group">
-                <div class="col-md-12">
-                    <label class="font-weight-bold" for="contact">Contact Number</label>
-                    <input type="tel" name="contact" id="contact" class="form-control" placeholder="Contact Number" required>
-                </div>
-            </div>
-        
-            <div class="row form-group">
-                <div class="col-md-12">
-                    <label class="font-weight-bold" for="autoSizingSelect">Choose Role</label>
-                    <select class="form-select" id="autoSizingSelect" name="role" onchange="toggleResumeUpload()" required>
-                        <option value="" selected>Choose...</option>
-                        <option value="intern">Intern</option>
-                        <option value="associate">Associate</option>
-                        <option value="trainee">Trainee</option>
-                        <option value="partner">Partner</option>
-                    </select>
-                </div>
-            </div>
-        
-            <div class="row form-group" id="resumeUpload" style="display: none;">
-                <div class="col-md-12">
-                    <label class=" font-weight-bold" for="resume">Upload Resume</label>
-                    <div class="custom-file">
-                      <input type="file" name="resume" id="resume" class="custom-file-input" accept=".pdf,.doc,.docx">
-                      <label class="custom-file-label" for="resume">Choose file</label>
+              <div class="row form-group">
+                  <div class="col-md-12 mb-3 mb-md-0">
+                      <label class="font-weight-bold" for="name">Full Name</label>
+                      <input type="text" name="name" id="name" class="form-control" placeholder="Full Name" required>
                   </div>
-                </div>
-            </div>
-        
-            <div class="row form-group">
-                <div class="col-md-12">
-                    <label class="font-weight-bold" for="message">Message</label>
-                    <textarea name="message" id="message" cols="30" rows="5" class="form-control" placeholder="Say hello to us" required></textarea>
-                </div>
-            </div>
-        
-            <div class="row form-group">
-                <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary py-3 px-4">Send Message</button>
-                </div>
-            </div>
-        </form>
-        
-        <div id="successAlert" style="display: none; padding: 10px; background-color: #4CAF50; color: white; margin-top: 10px; text-align: center; border-radius: 5px;"></div>
-        
-          
-        </div>
+              </div>
+      
+              <div class="row form-group">
+                  <div class="col-md-12">
+                      <label class="font-weight-bold" for="email">Email</label>
+                      <input type="email" name="email" id="email" class="form-control" placeholder="Email Address" required>
+                  </div>
+              </div>
+      
+              <div class="row form-group">
+                  <div class="col-md-12">
+                      <label class="font-weight-bold" for="contact">Contact Number</label>
+                      <input type="tel" name="contact" id="contact" class="form-control" placeholder="Contact Number" required>
+                  </div>
+              </div>
+      
+              <div class="row form-group">
+                  <div class="col-md-12">
+                      <label class="font-weight-bold" for="autoSizingSelect">Choose Role</label>
+                      <select class="custom-select" id="autoSizingSelect" name="role" onchange="toggleResumeUpload()" required>
+                          <option value="" selected>Choose...</option>
+                          <option value="intern">Intern</option>
+                          <option value="associate">Associate</option>
+                          <option value="trainee">Trainee</option>
+                          <option value="partner">Partner</option>
+                      </select>
+                  </div>
+              </div>
+      
+              <div class="row form-group" id="resumeUpload" style="display: none;">
+                  <div class="col-md-12">
+                      <label class="font-weight-bold" for="resume">Upload Resume</label>
+                      <div class="custom-file">
+                          <input type="file" name="resume" id="resume" class="custom-file-input" accept=".pdf,.doc,.docx" onchange="updateFileName()">
+                          <label class="custom-file-label" for="resume">Choose file</label>
+                      </div>
+                  </div>
+              </div>
+      
+              <div class="row form-group">
+                  <div class="col-md-12">
+                      <label class="font-weight-bold" for="message">Message</label>
+                      <textarea name="message" id="message" cols="30" rows="5" class="form-control" placeholder="Say hello to us" required></textarea>
+                  </div>
+              </div>
+      
+              <div class="row form-group">
+                  <div class="col-md-12">
+                      <button type="submit" class="btn btn-primary py-3 px-4 submitBtn">Send Message</button>
+                  </div>
+              </div>
+          </form>
+      
+          <div id="successAlert" style="display: none; padding: 10px; background-color: #4CAF50; color: white; margin-top: 10px; text-align: center; border-radius: 5px;"></div>
+      </div>
+      
   
         <div class="col-lg-4 ml-auto">
           <div class="p-4 mb-3 bg-white">
@@ -185,46 +181,12 @@
           <div class="col-lg-5 mr-auto">
             <h2 class="mb-5">Happy <span class="text-primary">Clients Says</span></h2>
             <div class="owl-carousel nonloop-block-4 testimonial-slider">
-              <div class="testimony-1">
-                <div class="d-flex align-items-center mb-4">
-                  <img src="images/img_sq.jpg" alt="Image" class="vcard mr-4">
-                  <div>
-                    <h3>Jinnie,  </h3>
-                    <p>Founding Team </p>
-                  </div>
-                </div>
-                <blockquote>
-                  <p>C47 Lawkase helped me understand all the legal stuff in my contracts. They were really careful and made sure my business was safe. I felt much better working with them.</p>
-                </blockquote>
-              </div>
-
-              <div class="testimony-1">
-                <div class="d-flex align-items-center mb-4">
-                  <img src="images/img_sq.jpg" alt="Image" class="vcard mr-4">
-                  <div>
-                    <h3>Anchal Dogra</h3>
-                    <p>NexPeak Leadership Team </p>
-                  </div>
-                </div>
-                <blockquote>
-                  <p>Going through a divorce and custody issues was really tough. C47 Lawkase was there for me, explaining everything clearly and making sure my kids were okay. They really cared.</p>
-                </blockquote>
-              </div>
-
-              <div class="testimony-1">
-                <div class="d-flex align-items-center mb-4">
-                  <img src="images/img_sq.jpg" alt="Image" class="vcard mr-4">
-                  <div>
-                    <h3>John Doe</h3>
-                    <p>Business Man</p>
-                  </div>
-                </div>
-                <blockquote>
-                  <p>When I had trouble with my medical license, C47 Lawkase helped me out. They knew exactly what to do and fought hard for me. They're really good at this stuff, and I'd tell anyone to go see them.</p>
-                </blockquote>
-              </div>
+              <div id="testimonials-container"></div> 
             </div>
           </div>
+
+
+
           <div class="col-lg-6">
             
             <h2 class="mb-5">Frequently <span class="text-primary">Ask Questions</span></h2>
@@ -369,6 +331,7 @@
 
   <!-- JS Scripts -->
    <script src="js/joineeform.js"></script>
+   
   <script src="js/navbar.js"></script>
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -382,6 +345,7 @@
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/bootstrap-datepicker.min.js"></script>
   <script src="js/aos.js"></script>
+  <script src="js/testimonials.js"></script>
   <!-- <script src="js/circleaudioplayer.js"></script> -->
 
   <script src="js/main.js"></script>

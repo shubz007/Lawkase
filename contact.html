@@ -91,47 +91,31 @@
   
   
   
-          <form  method="POST" class="contact-form" id="contactForm" >
-  
-            <div class="row form-group">
-              <div class="col-md-12 mb-3 mb-md-0">
-                <label class="font-weight-bold" for="name" >Full Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Full Name" required>
+          <div class="container">
+            <div class="alert alert-success" role="alert" style="opacity:0;">
+              A simple success alert—check it out!
+            </div>
+            <form method="POST" id="contactForm">
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="" required>
               </div>
-            </div>
-            <div class="row form-group">
-              <div class="col-md-12">
-                <label class="font-weight-bold" for="email">Email</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="Email Address" required>
+              <div class="mb-3">
+                <label for="email-address" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email-address" name="email-address" value="" required>
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
               </div>
-            </div>
-            <div class="row form-group">
-              <div class="col-md-12">
-                <label class="font-weight-bold" for="subject">Subject</label>
-                <input type="text" name="subject" id="subject" class="form-control" placeholder="Enter Subject" required>
+              <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="subject" name="subject" value="" required>
               </div>
-            </div>
-  
-  
-            <div class="row form-group">
-              <div class="col-md-12">
-                <label class="font-weight-bold" for="message">Message</label>
-                <textarea name="message" id="message" cols="20" rows="2" class="form-control"
-                  placeholder="Say hello to us" required></textarea>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
               </div>
-            </div>
-  
-            <div class="row form-group">
-              <div class="col-md-12">
-               <button type="submit"  class="btn btn-primary py-3 px-4">Send Message</button>
-                </div>
-            </div>
-            
-  
-          </form>
-          <div id="successMessage" style="display: none; margin-top: 10px; color: green; font-weight: bold;">
-            Thanks for your request. Our team will connect with you soon.
-        </div>
+              <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+            </form>
+          </div>
         </div>
        
   
