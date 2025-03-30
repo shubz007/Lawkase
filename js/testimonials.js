@@ -4,7 +4,7 @@ $(document).ready(function() {
         {
             name: "Jinnie",
             role: "Founding Team",
-            image: "images/test1.png",
+            image: "images/test2.png",
             message: "C47 Lawkase helped me understand all the legal stuff in my contracts. They were really careful and made sure my business was safe. I felt much better working with them."
         },
         {
